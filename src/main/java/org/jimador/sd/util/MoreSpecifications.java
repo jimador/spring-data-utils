@@ -22,10 +22,10 @@ import java.util.function.Function;
 public class MoreSpecifications<T> implements Specification<T> {
 
     /**
-     * Build a {@link "in"} {@link Specification}
+     * Build a <em>"in"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
-     * @param coll                the collection of values for the {@literal "in"}
+     * @param coll                the collection of values for the <em>"in"</em>
      * @param <E>                 the entity type
      * @param <X>                 the collection type
      *
@@ -36,10 +36,10 @@ public class MoreSpecifications<T> implements Specification<T> {
     }
 
     /**
-     * Build a {@literal "equals"} {@link Specification}
+     * Build a <em>"equals"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
-     * @param value               the {@literal value} for the {@literal "equals"}
+     * @param value               the value for the <em>"equals"</em>
      * @param <E>                 the entity type
      * @param <V>                 the value type
      *
@@ -50,10 +50,10 @@ public class MoreSpecifications<T> implements Specification<T> {
     }
 
     /**
-     * Build a {@literal "like"} {@link Specification}
+     * Build a <em>"like"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
-     * @param value               the {@code String}
+     * @param value               the {@code String} for the <em>"like"</em>
      * @param <E>                 the entity type
      *
      * @return A {@link MoreSpecifications} wrapping a {@link LikeSpecification}
@@ -63,25 +63,25 @@ public class MoreSpecifications<T> implements Specification<T> {
     }
 
     /**
-     * Build a {@literal "starts with"} {@link Specification}
+     * Build a <em>"starts with"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
-     * @param value               the {@code String}
+     * @param value               the {@code String} for the <em>"starts with"</em>
      * @param <E>                 the entity type
      *
      * @return A {@link Specification} wrapping a {@link LikeSpecification}
      *
-     * @apiNote self-use: calls {@link #startsWith(Function, String, boolean)} with {@literal ignoreCase} {@code false}
+     * @apiNote self-use: calls {@link #startsWith(Function, String, boolean)} with <em>ignoreCase</em> {@code false}
      */
     public static <E> Specification<E> startsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
         return Specification.where(startsWith(expressionExtractor, value + "%", false));
     }
 
     /**
-     * Build a {@literal "starts with"} {@link Specification}
+     * Build a <em>"starts with"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
-     * @param value               the {@code String}
+     * @param value               the {@code String} for the <em>"starts with"</em>
      * @param <E>                 the entity type
      * @param ignoreCase          case-insensitive {@code String} compare
      *
@@ -92,7 +92,7 @@ public class MoreSpecifications<T> implements Specification<T> {
     }
 
     /**
-     * Build a {@literal "starts with"} {@link Specification}
+     * Build a <em>"distinct"</em> {@link Specification}
      *
      * @param specification the specification to wrap
      *
