@@ -1,4 +1,10 @@
-# spring-redis-playground
-##### _A playground for spring and redis for fun and profit._
+# Utilities for Spring Data
+#### A playground for Spring Data for fun and profit.
 
-Currently testing out support for Redis Streams with Spring Data 2.2.0.M1
+### MoreSpecifications
+Convinence class for constructing ```org.springframework.data.jpa.domain.Specification``` instances
+```java
+Specification<MyEntity> someSpec = Specification.where(MoreSpecifications.valueIn(root -> root.get("someThing"), someCollection))
+                                                .and(MoreSpecifications.startsWith(root -> root.get("someField"), "foo"))
+                                                .or(MoreSpecifications.like(root -> root.get("someOtherField"), "bar"));
+```
