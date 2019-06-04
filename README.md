@@ -1,4 +1,5 @@
-# Utilities for Spring Data
+# Utilities for Spring Data 
+[![CircleCI](https://circleci.com/gh/jimador/spring-data-utils/tree/master.svg?style=svg)](https://circleci.com/gh/jimador/spring-data-utils/tree/master)
 #### A playground for Spring Data for fun and profit.
 
 ### MoreSpecifications
