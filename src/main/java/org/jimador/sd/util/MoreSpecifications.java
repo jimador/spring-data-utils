@@ -19,6 +19,7 @@ import java.util.function.Function;
  * @see Specification
  * @see org.springframework.data.jpa.domain.Specifications
  */
+
 public class MoreSpecifications<T> implements Specification<T> {
 
     /**
@@ -59,7 +60,7 @@ public class MoreSpecifications<T> implements Specification<T> {
      * @return A {@link MoreSpecifications} wrapping a {@link LikeSpecification}
      */
     public static <E> Specification<E> like(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
-        return Specification.where(new LikeSpecification<>(expressionExtractor, "%" + value + "%", true));
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : "%" + value + "%", true));
     }
 
     /**
@@ -74,7 +75,7 @@ public class MoreSpecifications<T> implements Specification<T> {
      * @apiNote self-use: calls {@link #startsWith(Function, String, boolean)} with <em>ignoreCase</em> {@code false}
      */
     public static <E> Specification<E> startsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
-        return Specification.where(startsWith(expressionExtractor, value + "%", false));
+        return Specification.where(startsWith(expressionExtractor, value == null ? null : value + "%", false));
     }
 
     /**
@@ -88,7 +89,7 @@ public class MoreSpecifications<T> implements Specification<T> {
      * @return A {@link Specification} wrapping a {@link LikeSpecification}
      */
     public static <E> Specification<E> startsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value, boolean ignoreCase) {
-        return Specification.where(new LikeSpecification<>(expressionExtractor, value + "%", ignoreCase));
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : value + "%", ignoreCase));
     }
 
     /**
