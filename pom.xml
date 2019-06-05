@@ -85,6 +85,7 @@
                         <include>**/*Spec.java</include>
                     </includes>
                     <!-- CircleCI build workaround -->
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <forkCount>3</forkCount>
                     <reuseForks>true</reuseForks>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
