@@ -51,7 +51,7 @@ public class MoreSpecifications<T> implements Specification<T> {
     }
 
     /**
-     * Build a <em>"like"</em> {@link Specification}
+     * Build a case-sensitive <em>"like"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
      * @param value               the {@code String} for the <em>"like"</em>
@@ -60,11 +60,24 @@ public class MoreSpecifications<T> implements Specification<T> {
      * @return A {@link MoreSpecifications} wrapping a {@link LikeSpecification}
      */
     public static <E> Specification<E> like(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : "%" + value + "%", false));
+    }
+
+    /**
+     * Build a case-insensitive <em>"like"</em> {@link Specification}
+     *
+     * @param expressionExtractor {@code Function} to extract the {@link Expression}
+     * @param value               the {@code String} for the <em>"like"</em>
+     * @param <E>                 the entity type
+     *
+     * @return A {@link MoreSpecifications} wrapping a {@link LikeSpecification}
+     */
+    public static <E> Specification<E> likeIC(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
         return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : "%" + value + "%", true));
     }
 
     /**
-     * Build a <em>"starts with"</em> {@link Specification}
+     * Build a case-sensitive <em>"starts with"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
      * @param value               the {@code String} for the <em>"starts with"</em>
@@ -72,25 +85,51 @@ public class MoreSpecifications<T> implements Specification<T> {
      *
      * @return A {@link Specification} wrapping a {@link LikeSpecification}
      *
-     * @apiNote self-use: calls {@link #startsWith(Function, String, boolean)} with <em>ignoreCase</em> {@code false}
      */
     public static <E> Specification<E> startsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
-        return Specification.where(startsWith(expressionExtractor, value == null ? null : value + "%", false));
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : value + "%", false));
     }
 
     /**
-     * Build a <em>"starts with"</em> {@link Specification}
+     * Build a case-insensitive <em>"starts with"</em> {@link Specification}
      *
      * @param expressionExtractor {@code Function} to extract the {@link Expression}
      * @param value               the {@code String} for the <em>"starts with"</em>
      * @param <E>                 the entity type
-     * @param ignoreCase          case-insensitive {@code String} compare
      *
      * @return A {@link Specification} wrapping a {@link LikeSpecification}
      */
-    public static <E> Specification<E> startsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value, boolean ignoreCase) {
-        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : value + "%", ignoreCase));
+    public static <E> Specification<E> startsWithIC(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : value + "%", true));
     }
+
+    /**
+     * Build a case-sensitive <em>"ends with"</em> {@link Specification}
+     *
+     * @param expressionExtractor {@code Function} to extract the {@link Expression}
+     * @param value               the {@code String} for the <em>"ends with"</em>
+     * @param <E>                 the entity type
+     *
+     * @return A {@link Specification} wrapping a {@link LikeSpecification}
+     *
+     */
+    public static <E> Specification<E> endsWith(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : "%" + value, false));
+    }
+
+    /**
+     * Build a case-insensitive <em>"ends with"</em> {@link Specification}
+     *
+     * @param expressionExtractor {@code Function} to extract the {@link Expression}
+     * @param value               the {@code String} for the <em>"ends with"</em>
+     * @param <E>                 the entity type
+     *
+     * @return A {@link Specification} wrapping a {@link LikeSpecification}
+     */
+    public static <E> Specification<E> endsWithIC(Function<Root<E>, Expression<String>> expressionExtractor, String value) {
+        return Specification.where(new LikeSpecification<>(expressionExtractor, value == null ? null : "%" + value, true));
+    }
+
 
     /**
      * Build a <em>"distinct"</em> {@link Specification}
