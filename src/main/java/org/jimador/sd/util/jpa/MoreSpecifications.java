@@ -1,4 +1,4 @@
-package org.jimador.sd.util;
+package org.jimador.sd.util.jpa;
 
 import org.springframework.data.jpa.domain.Specification;
 

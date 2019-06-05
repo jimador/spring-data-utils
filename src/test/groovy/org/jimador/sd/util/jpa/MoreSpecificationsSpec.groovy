@@ -1,5 +1,6 @@
-package org.jimador.sd.util
+package org.jimador.sd.util.jpa
 
+import org.jimador.sd.util.jpa.MoreSpecifications
 import spock.lang.Specification
 
 class MoreSpecificationsSpec extends Specification {
